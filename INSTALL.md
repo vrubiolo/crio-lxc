@@ -20,11 +20,11 @@ Install the build dependencies which are required to build the runtime and runti
 
 ```sh
 # liblxc / conmon build dependencies
-apt-get install build-essential libtool automake pkg-config \
+sudo apt-get install build-essential libtool automake pkg-config \
 libseccomp-dev libapparmor-dev libbtrfs-dev \
-libdevmapper-dev libcap-dev libc6-dev libglib2.0-dev
+libdevmapper-dev libcap-dev libc6-dev libglib2.0-dev golang
 # k8s dependencies, tools
-apt-get install jq ebtables iptables conntrack
+sudo apt-get install jq ebtables iptables conntrack
 ```
 
 ### arch linux
@@ -53,16 +53,16 @@ cd lxc
 ./configure --enable-bash=no --enable-tools=no \
   --enable-commands=no --enable-seccomp=yes \
   --enable-capabilities=yes --enable-apparmor=yes
-make install
+sudo make install
 
-echo /usr/local/lib > /etc/ld.so.conf.d/local.conf
-ldconfig
+echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/local.conf
+sudo ldconfig
 ```
 
 ### crio-lxc
 
 ```
-make install
+sudo make install
 ```
 
 The installation prefix environment variable is set to `PREFIX=/usr/local` by default.</br>
